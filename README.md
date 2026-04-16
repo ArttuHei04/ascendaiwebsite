@@ -1,2 +1,2 @@
-# aibotwebsite
-a website which includes ai bot assistant
+# ascendaiwebsite
+AI-powered personal improvement planner with real-time tracking and adaptive recommendationst
