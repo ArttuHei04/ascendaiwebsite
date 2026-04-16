@@ -47,17 +47,14 @@ opacity:0;
 }
 
 @keyframes introFade{
-
 from{
 opacity:0;
 transform:translateY(20px);
 }
-
 to{
 opacity:1;
 transform:translateY(0);
 }
-
 }
 
 /* NAV */
@@ -204,7 +201,7 @@ padding:30px;
 color:#64748b;
 }
 
-/* DASHBOARD LAYOUT */
+/* DASHBOARD */
 
 .dashboard{
 display:flex;
@@ -239,7 +236,7 @@ transition:0.2s;
 background:#1e293b;
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 
 .main{
 flex:1;
@@ -262,7 +259,7 @@ display:none;
 display:block;
 }
 
-/* DASHBOARD CARDS */
+/* CARDS */
 
 .cards{
 display:flex;
@@ -280,14 +277,77 @@ flex:1;
 min-width:180px;
 }
 
-/* PLAN LIST */
+/* =========================
+   🔥 PLAN SYSTEM UPGRADE
+========================= */
 
-.plan-list{
-margin-top:15px;
+/* BUTTON */
+
+#generate-plan{
+background: linear-gradient(135deg, #6366f1, #4f46e5);
+border:none;
+padding:12px 22px;
+border-radius:12px;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:all 0.25s ease;
+margin-bottom:20px;
+box-shadow:0 6px 20px rgba(99,102,241,0.3);
 }
 
-.plan-list li{
-margin-bottom:8px;
+#generate-plan:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(99,102,241,0.5);
+}
+
+#generate-plan:disabled{
+opacity:0.6;
+cursor:not-allowed;
+transform:none;
+}
+
+/* PLAN LIST */
+
+#plan-list{
+list-style:none;
+margin-top:10px;
+padding:0;
+}
+
+/* TASK ITEM */
+
+#plan-list li{
+display:flex;
+align-items:center;
+gap:12px;
+background:#020617;
+border:1px solid #1e293b;
+padding:14px;
+border-radius:12px;
+margin-bottom:10px;
+transition:all 0.2s ease;
+}
+
+#plan-list li:hover{
+border-color:#6366f1;
+transform:translateY(-2px);
+}
+
+/* CHECKBOX */
+
+#plan-list input[type="checkbox"]{
+width:18px;
+height:18px;
+accent-color:#6366f1;
+cursor:pointer;
+}
+
+/* COMPLETED */
+
+#plan-list input[type="checkbox"]:checked + span{
+text-decoration:line-through;
+color:#64748b;
 }
 
 /* CHAT */
@@ -323,13 +383,14 @@ border:none;
 background:#6366f1;
 color:white;
 cursor:pointer;
+transition:0.2s;
 }
 
 .chat-input button:hover{
 background:#4f46e5;
 }
 
-/* CHAT MESSAGES */
+/* MESSAGES */
 
 .message{
 margin:6px 0;

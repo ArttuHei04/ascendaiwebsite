@@ -10,105 +10,116 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.static("public"));
 
+/* CHAT */
+
 app.post("/chat", async (req, res) => {
 
   const userMessage = req.body.message;
 
-  if (!userMessage) {
-    return res.json({ reply: "Ask me anything about improving your looks." });
-  }
-
   try {
 
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-
       method: "POST",
-
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
       },
-
       body: JSON.stringify({
-
         model: "llama-3.1-8b-instant",
-
         temperature: 0.7,
-
         max_tokens: 500,
-
         messages: [
-
           {
             role: "system",
             content: `
-You are Ascend AI, a professional looksmaxxing assistant.
+You are Ascend AI, a looksmaxxing assistant.
 
-Your goal is to help users improve their appearance with healthy and realistic advice.
-
-Focus on:
-- skincare
-- hair
-- grooming
-- body fat
-- posture
-- fitness
-- fashion
-- hygiene
-- confidence
-
-Structure answers clearly like:
-
-1. Skin
-2. Hair
-3. Body
-4. Style
-5. Habits
-
-Give practical actionable advice.
-Be supportive and motivating.
+Give clear structured advice.
 `
           },
-
           {
             role: "user",
             content: userMessage
           }
-
         ]
-
       })
-
     });
 
     const data = await response.json();
 
-    if (!data.choices || !data.choices[0]) {
+    res.json({
+      reply: data.choices?.[0]?.message?.content || "No response"
+    });
 
-      console.error("Groq API error:", data);
+  } catch (err) {
+    res.json({ reply: "Server error" });
+  }
+});
 
-      return res.json({
-        reply: "AI could not respond right now."
-      });
 
+/* PLAN GENERATOR */
+
+app.post("/generate-plan", async (req, res) => {
+
+  const { answers } = req.body;
+
+  try {
+
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "llama-3.1-8b-instant",
+        temperature: 0.7,
+        messages: [
+          {
+            role: "system",
+            content: `
+Create a personalized looksmaxxing plan.
+
+Return ONLY JSON.
+
+{
+  "goals": [],
+  "daily": [],
+  "weekly": [],
+  "habits": [
+    { "task": "", "done": false }
+  ]
+}
+`
+          },
+          {
+            role: "user",
+            content: JSON.stringify(answers)
+          }
+        ]
+      })
+    });
+
+    const data = await response.json();
+    const raw = data.choices[0].message.content;
+
+    let parsed;
+
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return res.json({ error: "Invalid AI JSON", raw });
     }
 
-    res.json({
-      reply: data.choices[0].message.content
-    });
+    res.json({ plan: parsed });
 
-  } catch (error) {
-
-    console.error("Server error:", error);
-
-    res.json({
-      reply: "Server error. Try again later."
-    });
-
+  } catch (err) {
+    res.json({ error: "Server error" });
   }
 
 });
 
+
 app.listen(PORT, () => {
-  console.log(`🚀 Ascend AI running on http://localhost:${PORT}`);
+  console.log(`🚀 Running on http://localhost:${PORT}`);
 });

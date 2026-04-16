@@ -8,7 +8,6 @@
 
 <body class="dashboard">
 
-<!-- Sidebar -->
 <div class="sidebar">
   <h2>ASCEND GUIDE</h2>
   <ul>
@@ -18,10 +17,8 @@
   </ul>
 </div>
 
-<!-- Main -->
 <div class="main">
 
-  <!-- Top Bar -->
   <div class="topbar">
     <h1 id="page-title">Overview</h1>
   </div>
@@ -46,13 +43,11 @@
 
   <!-- PLAN -->
   <div id="plan" class="tab">
-    <h2>Your Daily Plan</h2>
-    <ul class="plan-list">
-      <li>💧 Drink 2L water</li>
-      <li>🏋️ Workout 4x/week</li>
-      <li>😴 Sleep 7–8 hours</li>
-      <li>🧴 Skincare routine</li>
-    </ul>
+    <h2>Your ascend plan</h2>
+
+    <button id="generate-plan">Generate My Plan</button>
+
+    <ul id="plan-list"></ul>
   </div>
 
   <!-- CHAT -->
@@ -69,6 +64,6 @@
 
 </div>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
