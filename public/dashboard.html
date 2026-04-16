@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - LooksMax AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard">
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>ASCEND GUIDE</h2>
+  <ul>
+    <li onclick="showTab('overview')">Overview</li>
+    <li onclick="showTab('plan')">My Plan</li>
+    <li onclick="showTab('chat')">AI Chat</li>
+  </ul>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <h1 id="page-title">Overview</h1>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div id="overview" class="tab active">
+    <div class="cards">
+      <div class="card">
+        <h3>Skin Score</h3>
+        <p>72%</p>
+      </div>
+      <div class="card">
+        <h3>Fitness</h3>
+        <p>Average</p>
+      </div>
+      <div class="card">
+        <h3>Style</h3>
+        <p>Improving</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN -->
+  <div id="plan" class="tab">
+    <h2>Your Daily Plan</h2>
+    <ul class="plan-list">
+      <li>💧 Drink 2L water</li>
+      <li>🏋️ Workout 4x/week</li>
+      <li>😴 Sleep 7–8 hours</li>
+      <li>🧴 Skincare routine</li>
+    </ul>
+  </div>
+
+  <!-- CHAT -->
+  <div id="chat" class="tab">
+    <h2>AI Assistant</h2>
+
+    <div id="chat-box"></div>
+
+    <div class="chat-input">
+      <input id="user-input" placeholder="Ask about looks..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

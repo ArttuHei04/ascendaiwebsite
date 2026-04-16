@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Ascend AI Login</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* LOGIN PAGE */
+.login-page{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#0f172a;
+}
+
+/* LOGIN CARD */
+.login-box{
+background:#020617;
+padding:40px;
+border-radius:16px;
+border:1px solid #1e293b;
+width:360px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* TITLE */
+.login-box h2{
+margin-bottom:20px;
+}
+
+/* INPUTS */
+.login-box input{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border-radius:8px;
+border:none;
+background:#1e293b;
+color:white;
+outline:none;
+}
+
+/* BUTTONS */
+.login-box button{
+width:100%;
+padding:12px;
+margin-top:6px;
+border:none;
+border-radius:8px;
+background:#6366f1;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.login-box button:hover{
+background:#4f46e5;
+}
+
+/* SECOND BUTTON */
+.signup-btn{
+background:#1e293b !important;
+}
+
+.signup-btn:hover{
+background:#334155 !important;
+}
+
+/* SIGNUP BOX */
+#signup-section{
+margin-top:15px;
+padding-top:10px;
+border-top:1px solid #1e293b;
+}
+
+/* LOGO */
+.logo{
+font-size:22px;
+margin-bottom:20px;
+letter-spacing:2px;
+}
+
+.logo span{
+color:#6366f1;
+}
+
+</style>
+
+</head>
+
+<body class="login-page">
+
+<div class="login-box">
+
+<div class="logo">
+ASCEND <span>AI</span>
+</div>
+
+<h2>Login</h2>
+
+<!-- LOGIN FIELDS -->
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<button class="signup-btn" onclick="toggleSignup()">Create Account</button>
+
+<!-- SIGNUP POPUP -->
+<div id="signup-section" style="display:none;">
+
+  <input id="signup-email" type="email" placeholder="New Email">
+  <input id="signup-password" type="password" placeholder="New Password">
+
+  <button onclick="signUp()">Confirm Sign Up</button>
+
+</div>
+
+</div>
+
+<script>
+function toggleSignup() {
+  const section = document.getElementById("signup-section");
+  section.style.display = section.style.display === "none" ? "block" : "none";
+}
+</script>
+
+<script type="module" src="firebase.js"></script>
+
+</body>
+</html>

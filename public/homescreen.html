@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ascend AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- INTRO SCREEN -->
+<div id="intro-screen">
+  <h1 class="intro-text">
+    You have chosen the right path<br>
+    to become an <span>ELITE</span>
+  </h1>
+</div>
+
+<header class="nav">
+  <h2>ASCEND AI</h2>
+  <button onclick="goToDashboard()">Get Started</button>
+</header>
+
+<section class="hero">
+
+  <div class="hero-content">
+    <h1>Maximize Your Appearance</h1>
+    <p>AI-powered analysis and natural improvement strategies.</p>
+    <button onclick="goToDashboard()">Start Free</button>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/looks1.jpg" alt="Transformation example">
+  </div>
+
+</section>
+
+<section class="features">
+
+  <div class="feature">
+    <h3>Face Analysis</h3>
+    <p>Understand your facial strengths and weaknesses.</p>
+  </div>
+
+  <div class="feature">
+    <h3>Personal Plan</h3>
+    <p>Custom improvement roadmap.</p>
+  </div>
+
+  <div class="feature">
+    <h3>Chat Assistant</h3>
+    <p>Ask anything about looks improvement.</p>
+  </div>
+
+</section>
+
+<section class="gallery">
+
+  <h2>Real Results</h2>
+
+  <div class="gallery-grid">
+    <img src="images/chicooo.jpg" alt="Result 1">
+    <img src="images/looks 2.jpg" alt="Result 2">
+    <img src="images/looks 3.jpg" alt="Result 3">
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 ASCEND AI</p>
+</footer>
+
+<script>
+
+function goToDashboard() {
+  window.location.href = "dashboard.html";
+}
+
+/* INTRO ANIMATION */
+
+window.addEventListener("load", () => {
+
+  const intro = document.getElementById("intro-screen");
+
+  setTimeout(() => {
+
+    intro.classList.add("fade-out");
+
+    setTimeout(() => {
+      intro.style.display = "none";
+    }, 1000);
+
+  }, 3000);
+
+});
+
+</script>
+
+</body>
+</html>
